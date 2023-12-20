@@ -1,6 +1,8 @@
 import nodemailer from "nodemailer";
 import { Pool } from "pg";
 
+export const runtime = "edge";
+
 const pool = new Pool({
   user: "postgres",
   host: "localhost",
