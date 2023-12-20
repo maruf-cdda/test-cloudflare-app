@@ -7,7 +7,7 @@ import { FaFacebook, FaLinkedin } from "react-icons/fa";
 
 const ContactForm = () => {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2  gap-8 p-4 md:p-10 bg-[#FFF] shadow-lg  rounded-lg">
+    <div className="grid grid-cols-1 lg:grid-cols-2  gap-8 p-4 md:p-10 bg-[#FFF]  shadow-lg  rounded-lg">
       <div className="w-full">
         <h1 className=" text-2xl lg:text-4xl text-[#1A1A1A] m-0 pb-4 font-semibold">
           Send us a message

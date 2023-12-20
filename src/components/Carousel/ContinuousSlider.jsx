@@ -1,5 +1,3 @@
-import Image from "next/image";
-import React, { useEffect } from "react";
 import Marquee from "react-fast-marquee";
 import ProductCard from "../Card/ProductCard";
 

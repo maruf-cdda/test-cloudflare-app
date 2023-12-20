@@ -5,6 +5,7 @@ import Image from "next/image";
 import { teamData } from "./teamData";
 import TeamHeading from "./TeamHeading";
 import { useRouter, usePathname } from "next/navigation";
+import SwipeCarousel from "../Carousel/SwiperCarousel";
 
 const Teams = () => {
   const pathName = usePathname();
@@ -56,6 +57,7 @@ const Teams = () => {
         {/* leader carousal  */}
         <div>
           <Carousel />
+          {/* <SwipeCarousel /> */}
         </div>
 
         {/* Member heading  */}

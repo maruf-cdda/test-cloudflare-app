@@ -5,12 +5,14 @@ import PhoneInput, {
   isValidPhoneNumber,
 } from "react-phone-number-input";
 import "react-phone-number-input/style.css";
+import Loader from "../Loader";
 
 const FormComponent = () => {
   // name, email, phone, businessname, description
   const [phoneNumber, setPhoneNumber] = useState();
   const [aggree, setAggree] = useState(false);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const [formValue, setFormValue] = useState({
     firstName: "",
     lastName: "",
@@ -27,42 +29,59 @@ const FormComponent = () => {
 
   useEffect(() => {
     setFormValue({ ...formValue, phoneNumber: phoneNumber });
+
+    if (phoneNumber) {
+      if (phoneNumber && isValidPhoneNumber(phoneNumber)) {
+        setError("");
+      } else {
+        setError("Invalid phone number");
+      }
+    }
   }, [phoneNumber]);
-  // console.log(formValue);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    setLoading(true);
     if (formValue.phoneNumber && isValidPhoneNumber(formValue.phoneNumber)) {
       setError("");
-      console.log(
-        JSON.stringify({
-          name: formValue.firstName + " " + formValue.lastName,
-          email: formValue.email,
-          phone: formValue.phoneNumber,
-          businessname: formValue.company,
-          description: formValue.message,
+      const submitedData = {
+        name: formValue.firstName + " " + formValue.lastName,
+        email: formValue.email,
+        phone: formValue.phoneNumber,
+        businessname: formValue.company,
+        description: formValue.message,
+      };
+      fetch("/api/contact-us", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(submitedData),
+      })
+        .then((res) => {
+          if (res.status === 200) {
+            setLoading(false);
+            setFormValue({
+              firstName: "",
+              lastName: "",
+              email: "",
+              phoneNumber: "",
+              company: "",
+              message: "",
+            });
+            setPhoneNumber("");
+            setAggree(false);
+          }
         })
-      );
+        .catch((err) => {
+          setLoading(false);
+          setError("Something went wrong");
+          console.log(err);
+        });
     } else {
+      setLoading(false);
       setError("Invalid phone number");
     }
-
-    // console.log("phone", isValidPhoneNumber(phoneNumber));
-    // const submitedData = {
-    //   name: formValue.firstName + " " + formValue.lastName,
-    //   email: formValue.email,
-    //   phone: formValue.phoneNumber,
-    //   businessname: formValue.company,
-    //   description: formValue.message,
-    // };
-    // fetch("/api/contact-us", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(submitedData),
-    // });
   };
 
   return (
@@ -177,10 +196,12 @@ const FormComponent = () => {
           </label>
         </div>
         <button
-          disabled={!aggree}
-          className="w-full px-5 py-2.5 bg-[#2AA7DF] text-white rounded-lg font-medium mt-2.5 disabled:opacity-50 disabled:cursor-not-allowed"
+          disabled={loading || error || !aggree}
+          className="w-full px-5 py-2.5 bg-[#2AA7DF] text-white rounded-lg font-medium mt-2.5 disabled:opacity-50 disabled:cursor-not-allowed flex justify-center items-center gap-4"
         >
-          Send Message
+          {loading && <Loader size="sm" variant="info" />}
+
+          <span>Send Message</span>
         </button>
       </form>
     </div>

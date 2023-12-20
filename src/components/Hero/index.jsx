@@ -7,8 +7,8 @@ import { FaArrowRight } from "react-icons/fa";
 import { BiSolidStoreAlt } from "react-icons/bi";
 import { HiOutlineLightBulb } from "react-icons/hi";
 import { PiBriefcase } from "react-icons/pi";
-import SlideShow from "../Carousel/SlideShow";
 import { heroData } from "./heroData";
+import Slideshow from "../Carousel/SlideShow";
 
 const getBadgePosition = (angle, radius) => {
   const centerX = 115; // Adjust as needed
@@ -88,7 +88,7 @@ const Hero = () => {
         {/* right side */}
         <div className="single__carousal md:w-full lg:w-1/2 lg:px-16 xl:px-36">
           {/* carousal */}
-          <SlideShow data={heroData} />
+          <Slideshow data={heroData} />
         </div>
       </div>
 
