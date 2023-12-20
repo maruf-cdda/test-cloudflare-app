@@ -14,6 +14,7 @@ import { usePathname } from "next/navigation";
 
 const Carousel = ({ arrowMode, responsiveItem, defaultArrow = false }) => {
   const path = usePathname();
+  console.log(path);
   const data = [
     {
       name: "Abul Hasem",
@@ -92,7 +93,7 @@ const Carousel = ({ arrowMode, responsiveItem, defaultArrow = false }) => {
               <Card item={item} />
             </SwiperSlide>
           ))}
-          <SwiperBtn style={style} arrowMode={arrowMode} />
+          <SwiperBtn style={style} arrowMode={arrowMode} path={path} />
         </Swiper>
       </div>
     </div>
@@ -100,10 +101,14 @@ const Carousel = ({ arrowMode, responsiveItem, defaultArrow = false }) => {
 };
 export default Carousel;
 
-const SwiperBtn = ({ style, arrowMode }) => {
+const SwiperBtn = ({ style, arrowMode, path }) => {
   const swiper = useSwiper();
   return (
-    <div className={style.swipernavbtns}>
+    <div
+      className={
+        path == "/about-us" ? style.swiperaboutbtns : style.swipernavbtns
+      }
+    >
       <button
         className="btn1  lg:bg-[#E6E6E6] flex justify-center items-center"
         onClick={() => swiper.slidePrev()}

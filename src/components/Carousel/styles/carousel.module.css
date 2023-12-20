@@ -17,6 +17,7 @@
     padding-right: 110px;
   }
 
+  .swiperaboutbtns,
   .swipernavbtns {
     display: flex;
     align-items: end;
@@ -24,19 +25,36 @@
     margin-right: 0px;
     position: absolute;
     bottom: 10px;
-    /* background-color: #f6fbff; */
-    /* background: transparent; */
+    right: 0px;
+    border-radius: 0 10px;
+  }
+  /* for home page background-color */
+  .swipernavbtns {
     background: rgb(255, 255, 255);
     background: linear-gradient(
       90deg,
       rgba(251, 251, 251, 1) 4%,
-      rgb(244, 249, 252, 1) 100%
+      rgb(244, 249, 252, 1) 40%
     );
-    right: 0px;
-    border-radius: 0 10px;
+  }
+  /* for about page only  */
+  .swiperaboutbtns {
+    background: rgb(255, 255, 255);
+    background: linear-gradient(
+      90deg,
+      rgba(251, 251, 251, 1) 120%,
+      rgb(244, 249, 252, 1) 180%
+    );
   }
 }
-.swipernavbtns {
+
+.swiperaboutbtns button:hover,
+.swipernavbtns button:hover {
+  /* background-color: hsl(210, 100%, 40%); */
+  cursor: pointer;
+}
+.swipernavbtns,
+.swiperaboutbtns {
   display: flex;
   align-items: end;
   margin-right: 0px;
@@ -46,7 +64,8 @@
   height: 100%;
 }
 
-.swipernavbtns > button {
+.swipernavbtns > button,
+.swiperaboutbtns > button {
   width: 38px;
   height: 38px;
   border-radius: 50px;
@@ -57,9 +76,4 @@
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
   transition: all 0.5s;
   z-index: 99999999;
-}
-
-.swipernavbtns button:hover {
-  /* background-color: hsl(210, 100%, 40%); */
-  cursor: pointer;
 }

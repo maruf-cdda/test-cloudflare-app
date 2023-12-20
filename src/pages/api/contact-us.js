@@ -1,7 +1,7 @@
 import nodemailer from "nodemailer";
 import { Pool } from "pg";
 
-export const runtime = 'edge';
+export const runtime = "edge";
 
 const pool = new Pool({
   user: "postgres",
@@ -54,7 +54,7 @@ export default async function handler(req, res) {
 
   const mailOptions = {
     // from: email,
-    to: "toukir@cdda.io",
+    to: "maruf@cdda.io",
     subject: "From Contact form CDDA",
     text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nBusiness Name: ${businessname}\nDescription: ${description}`,
   };

@@ -37,7 +37,7 @@ const FormComponent = () => {
         setError("Invalid phone number");
       }
     }
-  }, [phoneNumber]);
+  }, [phoneNumber, formValue]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
