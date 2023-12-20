@@ -6,7 +6,7 @@ import { FaTwitter, FaFacebookF } from "react-icons/fa";
 const Card = ({ item }) => {
   const { name, position, facebook, twitter, img, instgram } = item;
   return (
-    <div className="bg-[#d1ccce] border border-gray-300  relative h-[350px]  rounded-[8px] overflow-hidden  ">
+    <div className="bg-[#d1ccce] border border-gray-300  relative h-[300px] md:h-[300px] lg:h-[380px] xl:h-[400px]  rounded-[8px] overflow-hidden  ">
       <Image
         className="h-full w-full object-cover  "
         src={img}

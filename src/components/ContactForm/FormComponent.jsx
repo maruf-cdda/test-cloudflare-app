@@ -28,16 +28,16 @@ const FormComponent = () => {
   };
 
   useEffect(() => {
-    setFormValue({ ...formValue, phoneNumber: phoneNumber });
-
     if (phoneNumber) {
+      formValue["phoneNumber"] = phoneNumber;
+
       if (phoneNumber && isValidPhoneNumber(phoneNumber)) {
         setError("");
       } else {
         setError("Invalid phone number");
       }
     }
-  }, [phoneNumber, formValue]);
+  }, [phoneNumber]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -174,6 +174,7 @@ const FormComponent = () => {
         </div>
         <div className="form-control flex items-center gap-2">
           <input
+            id="aggree"
             type="checkbox"
             className="cursor-pointer "
             value={aggree}
@@ -182,18 +183,18 @@ const FormComponent = () => {
 
             // checked={aggree}
           />
-          <label className="">
-            <p className="  m-0 p-0 font-medium  ">
+          <label htmlFor="aggree">
+            <p className="  m-0 p-0 font-medium cursor-pointer ">
               <span className="text-[#1A1A1A] text-sm lg:text-[16px] ">
                 I’d like to receive more information about company, I understand
                 and agree to the
               </span>
-              <span className="text-[#2AA7DF] text-sm lg:text-[14px] underline cursor-pointer ">
-                {" "}
-                Privacy Policy
-              </span>
             </p>
           </label>
+          <span className="text-[#2AA7DF] text-sm lg:text-[14px] underline cursor-pointer ">
+            {" "}
+            Privacy Policy
+          </span>
         </div>
         <button
           disabled={loading || error || !aggree}

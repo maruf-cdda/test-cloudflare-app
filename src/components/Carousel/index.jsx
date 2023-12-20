@@ -19,7 +19,7 @@ const Carousel = ({ arrowMode, responsiveItem, defaultArrow = false }) => {
     {
       name: "Abul Hasem",
       position: "CEO & Founder",
-      img: "/assets/person.png",
+      img: "/assets/teams/2.png",
       facebook: "",
       instgram: "",
       twitter: "",

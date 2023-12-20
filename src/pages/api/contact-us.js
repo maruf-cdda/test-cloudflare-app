@@ -54,7 +54,7 @@ export default async function handler(req, res) {
 
   const mailOptions = {
     // from: email,
-    to: "maruf@cdda.io",
+    to: "toukir@cdda.io",
     subject: "From Contact form CDDA",
     text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nBusiness Name: ${businessname}\nDescription: ${description}`,
   };
